@@ -1,0 +1,136 @@
+<html lang="en">
+
+<style>
+    body {
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    }
+
+    .wc-tooltip-container {
+        position: relative;
+        display: inline-block;
+    }
+
+    .wc-tooltip-text {
+        visibility: hidden;
+        width: 160px;
+        background-color: #555;
+        color: #fff;
+        text-align: center;
+        border-radius: 5px;
+        padding: 5px 0;
+        position: absolute;
+        z-index: 1;
+        bottom: 125%;
+        /* Position above the button */
+        left: 50%;
+        margin-left: -80px;
+        /* Center the tooltip */
+        opacity: 0;
+        transition: opacity 0.3s;
+
+    }
+
+    .wc-tooltip-text::after {
+        content: "";
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        margin-left: -5px;
+        border-width: 5px;
+        border-style: solid;
+        border-color: #555 transparent transparent transparent;
+    }
+
+    .wc-tooltip-container:hover .wc-tooltip-text {
+        visibility: visible;
+        opacity: 1;
+    }
+    .grid{
+        display: grid;
+        grid-template-columns: repeat(12, 1fr);
+        gap: 0.5em;
+    }
+    #grid2 p{
+        background-color: blue;
+        text-align: center;
+        color: white;
+        padding: 1rem 0.5rem;
+    }
+    p{
+        background-color: rgb(255, 81, 0);
+        text-align: center;
+        color: white;
+        padding: 1rem 0.5rem;
+    }
+</style>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script defer src="ClockWC\Clock.js"></script>
+    <script defer src="Calendar\Calendar.js"></script>
+    <script defer src="DragNDrop\DragNDrop.js"></script>
+    <script defer src="Grid\Grid.js"></script>
+</head>
+
+<body>
+    <div style="background-color: burlywood; padding: 20em 8em;">
+        <clock-wc alive color="red" bg-color="rgba(138, 88, 167, 0.5)"></clock-wc>
+        <clock-wc color="#8A58A7"></clock-wc>
+        <calendar-wc></calendar-wc>
+        <filedrop-wc url="/upload" name="fileForm" title="Bulk Upload" placeholder="Drop stuff here" submit-btn="Finish"
+            width="20rem"></filedrop-wc>
+
+        <wc-grid row-gap="2" col-gap="1" direction="column">
+            
+            <p>Test</p>
+            <p>Test</p>
+            <p>Test</p>
+            <p>Test</p>
+            <p>Test</p>
+            <p>Test</p>
+            <wc-grid row-gap="2" col-gap="1" id="grid2">
+                <p>Test</p>
+                <p>Test</p>
+                <p>Test</p>
+                <p>Test</p>
+                <p>Test</p>
+                <p>Test</p>
+                <p>Test</p>
+                <p>Test</p>
+                <p>Test</p>
+                <p>Test</p>
+                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Totam mollitia provident ducimus dolores voluptas accusantium vel corrupti aliquid, libero, beatae maxime facere facilis magnam autem enim, quisquam cumque excepturi illo!</p>
+                <p>Test</p>
+                <p>Test</p>
+                <p>Test</p>
+                <p>Test</p>
+                <p>Test</p>
+                <p>Test</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem veritatis, omnis perferendis, iusto unde nam iste facere facilis et dolorem consequuntur. Nam, tempore corrupti. Voluptates tenetur dolorum libero dicta cum.</p>
+                <p>Test</p>
+                <p>Test</p>
+                <p>Test</p>
+            </wc-grid>
+            <p>Test</p>
+            <p>Test</p>
+            <p>Test</p>
+            <p>Test</p>
+            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Totam mollitia provident ducimus dolores voluptas accusantium vel corrupti aliquid, libero, beatae maxime facere facilis magnam autem enim, quisquam cumque excepturi illo!</p>
+            <p>Test</p>
+            <p>Test</p>
+            <p>Test</p>
+            <p>Test</p>
+            <p>Test</p>
+            <p>Test</p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem veritatis, omnis perferendis, iusto unde nam iste facere facilis et dolorem consequuntur. Nam, tempore corrupti. Voluptates tenetur dolorum libero dicta cum.</p>
+            <p>Test</p>
+            <p>Test</p>
+            <p>Test</p>
+        </wc-grid>
+        
+    </div>
+</body>
+
+</html>
