@@ -5,39 +5,30 @@
  * @extends HTMLElement
  */
 customElements.define("wc-grid", class Grid extends HTMLElement {
-    /**
-     * @constructor
-     */
     constructor() {
         super()
         /**
          * @type {string}
-         * @property {string}
          */
         this.gap = "0.5em";
         /**
          * @type {string}
-         * @property {string}
          */
         this.gapRow = this.gap;
         /**
          * @type {string}
-         * @property {string}
          */
         this.gapCol = this.gap;
         /**
          * @type {string}
-         * @property {string}
          */
         this.direction = ""
         /**
          * @type {Set<string>}
-         * @property {Set<string>}
          */
-        this.acceptedDirections = new Set(["column", "row", "row-dense"])
+        this.acceptedDirections = new Set(["column", "row", "row dense"])
         /**
          * @type {string}
-         * @property {string}
          */
         this._css = `
         <style>
@@ -49,19 +40,15 @@ customElements.define("wc-grid", class Grid extends HTMLElement {
             gap: 0.5em;
         }
         .wc-row-gap-1{
-            
             row-gap: 0.5em;
         }
         .wc-col-gap-1{
-            
             column-gap: 0.5em;
         }
         .wc-row-gap-2{
-            
             row-gap: 1em;
         }
         .wc-col-gap-2{
-            
             column-gap: 1em;
         }
             
@@ -69,77 +56,69 @@ customElements.define("wc-grid", class Grid extends HTMLElement {
             gap: 1.5em;
         }
         .wc-row-gap-3{
-            
             row-gap: 1.5em;
+        }
+        .wc-col-gap-3{
+            column-gap: 1.5em;
         }
         .wc-gap-4{
             gap: 2em;
         }
         .wc-row-gap-4{
-            
             row-gap: 2em;
+        }
+        .wc-col-gap-4{
+            column-gap: 2em;
         }
         .wc-gap-5{
             gap: 2.5em;
         }
         .wc-row-gap-5{
-            
             row-gap: 2.5em;
         }
-        
-        .grid-row{
-            grid-auto-flow: row;
+        .wc-col-gap-5{
+            column-gap: 2.5em;
         }
-        
-        .grid-column{
-            grid-auto-flow: column;
-        }
-        
-        .grid-row-dense{
-            grid-auto-flow: row dense;
-        }
-        
-        .wc-col-1{
+        .wc-column-1{
             grid-template-columns: repeat(1, 1fr);
         }
-        .wc-col-2{
+        .wc-column-2{
             grid-template-columns: repeat(2, 1fr);
         }
-        .wc-col-3{
+        .wc-column-3{
             grid-template-columns: repeat(3, 1fr);
         }
-        .wc-col-4{
+        .wc-column-4{
             grid-template-columns: repeat(4, 1fr);
         }
-        .wc-col-5{
+        .wc-column-5{
             grid-template-columns: repeat(5, 1fr);
         }
-        .wc-col-6{
+        .wc-column-6{
             grid-template-columns: repeat(6, 1fr);
         }
-        .wc-col-7{
+        .wc-column-7{
             grid-template-columns: repeat(7, 1fr);
         }
-        .wc-col-8{
+        .wc-column-8{
             grid-template-columns: repeat(8, 1fr);
         }
-        .wc-col-9{
+        .wc-column-9{
             grid-template-columns: repeat(9, 1fr);
         }
-        .wc-col-10{
+        .wc-column-10{
             grid-template-columns: repeat(10, 1fr);
         }
-        .wc-col-11{
+        .wc-column-11{
             grid-template-columns: repeat(11, 1fr);
         }
-        .wc-col-12{
+        .wc-column-12{
             grid-template-columns: repeat(12, 1fr);
         }
         </style>
         `
         /**
          * @type {string}
-         * @property {string} innerHTML
          * @public
          */
         this.innerHTML = this._css + this.innerHTML
@@ -152,22 +131,22 @@ customElements.define("wc-grid", class Grid extends HTMLElement {
     attributeChangedCallback(name, oldVal, newVal) {
         if (name == "gap") {
             this.gap = newVal
-            console.log("Gap:", this.gap)
+            // console.log("Gap:", this.gap)
             this._applyGap()
         }
         if (name == "row-gap") {
             this.gapRow = newVal
-            console.log("row-gap:", this.gapRow)
+            // console.log("row-gap:", this.gapRow)
             this._applyGapRow()
         }
         if (name == "col-gap") {
             this.gapCol = newVal
-            console.log("col-gap:", this.gapCol)
+            // console.log("col-gap:", this.gapCol)
             this._applyColGap()
         }
         if (name == "direction" && this.acceptedDirections.has(newVal)) {
             this.direction = newVal
-            console.log("direction:", this.direction)
+            // console.log("direction:", this.direction)
             this._applyDirection()
         }
     }
@@ -230,31 +209,73 @@ customElements.define("wc-grid", class Grid extends HTMLElement {
      * @private
      */
     _applyDirection() {
-        this.style.gridAutoFlow = this.direction
+        switch (this.direction){
+            case "row dense":
+                this.style.gridAutoFlow = this.direction
+                this.style.rowGap = 0;
+            break
+            case "column":
+                this.style.gridTemplateColumns = "repeat(12, minmax(8.3% , 1fr))"
+            break
+            case "row":
+                this.style.gridAutoFlow = this.row
+            break
+        }
     }
 
-    connectedCallback() {
-    }
+    // connectedCallback() {
+        
+    // }
 })
 
 
 customElements.define("wc-item", class Item extends HTMLElement {
     constructor() {
         super()
-        this.innerHTML = `
-        <div class="wc-tooltip-container">
-            <div class="wc-tooltip-text">${this.text}</div>
-        </div>
+        this.xs = 4
+        this._css = `
+        <style>
+        </style>
         `
-
+        this.innerHTML = this._css + this.innerHTML
+        
+        // this.style.display = "block"
+        // this.style.display = "flex"
+        // this.style.height = "100%"
     }
 
     static get observedAttributes() {
-        return ["text"]
+        return ["xs"]
     }
+
+    _applyXS(){
+        let prevItem = this.previousElementSibling    
+        if (prevItem && prevItem.tagName == "wc-item".toUpperCase()){
+            // console.log("prev El:", prevItem)
+            let elementEnd = getComputedStyle(prevItem).getPropertyValue("grid-column-end");
+            let newStart = parseInt(elementEnd)
+            let newEnd = parseInt(this.xs) + newStart
+            // console.log("newStart", newStart)
+            // console.log("newEnd", newEnd)
+            if (newEnd <= 12){
+                this.style.setProperty('grid-column-start', newStart);
+                this.style.setProperty("grid-column-end", newEnd)
+            } else {
+                this.style.setProperty('grid-column-start', 1);
+                this.style.setProperty("grid-column-end", this.xs != 1 ? this.xs : 2)
+            }
+            
+        } else {
+            this.style.setProperty('grid-column-start', 1);
+            this.style.setProperty("grid-column-end", this.xs != 1 ? this.xs : 2)
+        }
+    }
+    
     attributeChangedCallback(name, oldVal, newVal) {
-        if (name == "text") {
-            this.text = newVal
+        if (name == "xs") {
+            this.xs = newVal
+            // console.log("xs:", this.xs)
+            this._applyXS()
         }
     }
 })

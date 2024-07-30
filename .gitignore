@@ -1,2 +1,6 @@
 *.code-workspace
 out\fonts
+out\scripts\prettify\Apache-License-2.0.txt
+*.woff
+*.eot
+*.svg
