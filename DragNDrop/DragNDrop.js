@@ -61,20 +61,35 @@ button {
     <section class="previewContainer"></section>
 </div>
 `
+
+/**
+ * Drag and drop file upload component
+ * @class
+ */
 class DragNDrop extends HTMLElement {
     constructor() {
         super();
         const shadow = this.attachShadow({ mode: "open" })
         // this.updateDate()
+        /** @type {string} */
         this._color = ""
+        /** @type {string} */
         this._bgColor = ""
+        /** @type {string} */
         this._title = "FoleDrop"
+        /** @type {string} */
         this._name = ""
+        /** @type {string} */
         this._height = ""
+        /** @type {string} */
         this._width = "fit-content"
+        /** @type {string} */
         this._url = ""
+        /** @type {Array} */
         this._files = []
+        /** @type {string} */
         this._placeholder = "Drop files here"
+        /** @type {string} */
         this._submit = "Submit"
         shadow.append(fileDropTemplate.content.cloneNode(true))
         
@@ -93,6 +108,11 @@ class DragNDrop extends HTMLElement {
         "submit-btn"
     ]
 
+    /**
+     * DragOver Event handler
+     * @param {Event} e
+     * @method
+     */
     handleDragOver(e) {
         e.preventDefault();
         e.stopPropagation();

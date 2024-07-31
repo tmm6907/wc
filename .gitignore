@@ -1,6 +1,10 @@
 *.code-workspace
-out\fonts
-out\scripts\prettify\Apache-License-2.0.txt
+/out
+
 *.woff
 *.eot
 *.svg
+jsdoc.conf.json
+out/Grid.html
+out/Grid.js.html
+out/index.html

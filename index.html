@@ -1,35 +1,16 @@
 <html lang="en">
 
-<style>
-    body {
-        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    }
-    
-    #grid2 .p{
-        background-color: blue;
-        text-align: center;
-        color: white;
-        padding: 1rem 0.5rem;
-    }
-    .p{
-        background-color: rgb(67, 60, 52);
-        text-align: center;
-        color: white;
-        padding: 1rem 0.5rem;
-        height: fit-content(100%);
-    }
-    @media (min-width: 600px) {
-    }
-</style>
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="styles/styles.css">
     <script defer src="ClockWC\Clock.js"></script>
     <script defer src="Calendar\Calendar.js"></script>
     <script defer src="DragNDrop\DragNDrop.js"></script>
     <script defer src="Grid\Grid.js"></script>
+    <script defer src="Button\Button.js"></script>
+    <script defer src="Button\ButtonGroup.js"></script>
 </head>
 
 <body>
@@ -42,7 +23,7 @@
 
         <wc-grid direction="column">
             <wc-item xs="6"><div class="p">Test</div class="p"></wc-item>
-            <wc-item xs="2" style="background-color: green;"><div class="p">Test</div class="p"></wc-item>
+            <wc-item xs="2"><div class="p">Test</div class="p"></wc-item>
             <wc-item xs="8"><div class="p">Test</div class="p"></wc-item>
             <wc-item xs="11"><div class="p">Test</div class="p"></wc-item>
             <wc-item xs="1"><div class="p">Test</div class="p"></wc-item>
@@ -93,7 +74,19 @@
             <wc-item xs="9"><main style="border: 1px magenta solid;text-align: center;">body</main></wc-item>
             <wc-item xs="12"><div style="border: 1px magenta solid;text-align: center;">footer</div></wc-item>
         </wc-grid>
+        <wc-button-group>
+            <button class="wc-btn" type="button" onclick="console.log('clicked')">Test</button>
+            <wc-button onclick="this.doStuff()">Test2</wc-button>
+            <wc-button onclick="this.doStuff()">Test2</wc-button>
+            <wc-button onclick="this.doStuff()">Test2</wc-button>
+            <wc-button onclick="this.doStuff()">Test2</wc-button>
+        </wc-button-group>
     </div>
+    <script>
+        // const wcBtn = document.querySelector("wc-button")
+        // let btn = new Button(console.log("Button Clicked"));
+        // wcBtn.append(btn)
+    </script>
 </body>
 
 </html>
