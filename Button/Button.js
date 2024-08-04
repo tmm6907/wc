@@ -62,13 +62,6 @@ class Button extends HTMLElement {
             this.setAttribute("varient", varient)
         }
         this.setAttribute("tabIndex", 0)
-        // this.handleVarient(varient)
-        console.log("finished")
-        // this.style.border = "0";
-        // this.style.borderRadius = "0.25em";
-        // this.style.setProperty("padding", "0.5em 1em")
-        // this.style.backgroundColor = "white"
-        
         this.setAttribute("role", "button")
         if (onClick && typeof this._onclickHandler === "function"){
             console.log("add click", this.innerText, this._onclickHandler)
@@ -83,6 +76,11 @@ class Button extends HTMLElement {
         return["onlick", "varient"]
     }
 
+    /**
+     * Handles varient attr.
+     * @param {string} varient
+     * @private
+     */
     handleVarient(varient) {
         if (varient){
             this.classList.remove("wc-btn")
@@ -132,6 +130,6 @@ class Button extends HTMLElement {
     }
 }
 customElements.define("wc-button", Button)
-const wcBtnGrp = document.querySelector("wc-button-group")
-let btn = new Button("Text", function(e) { this.doStuff() }, "outline");
-wcBtnGrp.appendChild(btn)
+// const wcBtnGrp = document.querySelector("wc-button-group")
+// let btn = new Button("Text", function(e) { this.doStuff() }, "outline");
+// wcBtnGrp.appendChild(btn)

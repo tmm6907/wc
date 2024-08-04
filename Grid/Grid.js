@@ -1,4 +1,3 @@
-
 /**
  * Grid web component.
  * @class

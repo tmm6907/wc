@@ -5,6 +5,4 @@
 *.eot
 *.svg
 jsdoc.conf.json
-out/Grid.html
-out/Grid.js.html
-out/index.html
+

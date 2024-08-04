@@ -1,3 +1,19 @@
+
+:root{
+    --textColorLight: rgb(199, 199, 199);
+    --bgColorDark: rgb(31, 45, 70);
+    --bgColorLight: rgb(255, 255, 255);
+    --colorDark: rgb(50, 50, 50);
+    --colorSuccess: rgb(47, 151, 92);
+    --colorWarning: rgb(255, 179, 0);
+    --colorPrimary: rgb(35, 115, 245);
+    --colorDanger: rgb(245, 35, 35);
+    --boxShadowDark: 2px 2px 5px rgb(39, 39, 39);
+    --boxShadowLight: 2px 2px 5px grey;
+
+    --borderRadSmall: 0.25em;
+}
+
 body {
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
@@ -40,4 +56,8 @@ body {
 .wc-btn-group > .wc-btn-outline,
 .wc-btn-group > .wc-btn-outline:active {
     border: 0;
+}
+
+.alert.icon:nth-child(1){
+
 }
