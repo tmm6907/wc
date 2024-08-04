@@ -1,8 +1,4 @@
 *.code-workspace
-/out
-
-*.woff
-*.eot
-*.svg
+\out
 jsdoc.conf.json
 
