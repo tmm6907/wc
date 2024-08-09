@@ -1,8 +1,8 @@
-
+import WC from "../WC.js"
 /**
  * Alert component
  * @class
- * @extends HTMLElement
+ * @extends WC
  */
 class Alert extends HTMLElement {
     constructor() {
@@ -36,15 +36,27 @@ class Alert extends HTMLElement {
                 "icon heading"
                 "body body"
                 ;
+                align-content: center;
                 :nth-child(2){
                     grid-area: icon;
                 }
                 :nth-child(3){
                     grid-area: heading;
                 }
-                :nth-child(4){
+                wc-alert-body{
                     grid-area: body;
                     margin: 0;
+                }
+            }
+
+            .alert.icon:has(wc-alert-close) {
+                grid-template-columns: min-content 2fr min-content;
+                grid-template-areas: 
+                "icon heading close"
+                "body body body"
+                ;
+                wc-alert-close {
+                    grid-area: close;
                 }
             }
             
@@ -70,6 +82,7 @@ class Alert extends HTMLElement {
         this.innerHTML = this._css + this.innerHTML
         this.classList.add("alert")
         this.classList.add("alert-light")
+        // this.props.count = 0
     }
     static get observedAttributes() {
         return ["theme", "varient", "icon"]
@@ -129,9 +142,7 @@ class Alert extends HTMLElement {
                 break;
         }
     }
-    connectedCallback(){
-        console.log("log", Alert.observedAttributes)
-    }
 }
+
 
 customElements.define("wc-alert", Alert)

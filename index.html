@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="styles/styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/reefjs@13/dist/reef.min.js"></script>
     <script defer type="module" src="ClockWC\Clock.js"></script>
     <script defer type="module" src="Calendar\Calendar.js"></script>
     <script defer type="module" src="DragNDrop\DragNDrop.js"></script>
@@ -12,13 +13,18 @@
     <script defer type="module" src="Button\Button.js"></script>
     <script defer type="module" src="Button\ButtonGroup.js"></script>
     <script defer type="module" src="Alert\Alert.js"></script>
-    
+    <script defer type="module" src=".\WC.js"></script>
+    <script defer type="module" src="Alert\AlertCloseBtn.js"></script>
+    <script defer type="module" src="Alert\AlertBody.js"></script>
+    <script defer type="module" src="ActiveSearch\ActiveSearch.js"></script>
+    <!-- <script defer type="module" src="Alert\AlertTitle.js"></script> -->
+    <!-- <script defer type="module" src="Alert\AlertIcon.js"></script> -->
 </head>
 
 <body>
     <div style="background-color: var(--textColorLight); padding: 8em 4em; height:100%">
-        <!-- <clock-wc alive color="red" bg-color="rgba(138, 88, 167, 0.5)"></clock-wc>
-        <clock-wc color="#8A58A7"></clock-wc>
+        <wc-clock alive color="white" bg-color="rgba(138, 88, 167, 0.5)"></wc-clock>
+        <!-- <wc-clock color="#8A58A7"></wc-clock>
         <calendar-wc></calendar-wc>
         <filedrop-wc url="/upload" name="fileForm" title="Bulk Upload" placeholder="Drop stuff here" submit-btn="Finish"
             width="20rem"></filedrop-wc>
@@ -84,24 +90,23 @@
             <wc-button onclick="this.doStuff()">Test2</wc-button>
         </wc-button-group> -->
         <!-- <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/1xD3YsFCaGBsFVpMrhMmzQ?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe> -->
-    
+
         <wc-alert theme="dark" varient="danger" icon>
             <i class="fa fa-exclamation"></i>
             <h4>Alert Title</h4>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. </p>
+            <wc-alert-body>Lorem ipsum dolor sit amet consectetur adipisicing elit.</wc-alert-body>
         </wc-alert>
         <wc-alert style="margin-block: 1em;" varient="success" icon>
-            <i class="fa-solid fa-check"></i>
-            <h4>Alert Title 2</h4>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi unde dolore obcaecati at accusantium id expedita et assumenda. Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+            <i class="fa-solid fa-check" style="padding-block: 0.25em;"></i>
+            <h4 style="padding-block: 0.25em;">Alert Title 2</h4>
+            <wc-alert-close><i class="fa fa-x" style="font-weight: bold;"></i></wc-alert-close>
+            <wc-alert-body>Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi unde dolore obcaecati at accusantium
+                id expedita et assumenda. Lorem ipsum dolor sit amet consectetur adipisicing elit.</wc-alert-body>
         </wc-alert>
+        
+        <wc-active-search placeholder="search"></wc-active-search>
     </div>
     <script src="https://kit.fontawesome.com/1779bb385a.js" crossorigin="anonymous"></script>
-    <script>
-        // const wcBtn = document.querySelector("wc-button")
-        // let btn = new Button(console.log("Button Clicked"));
-        // wcBtn.append(btn)
-    </script>
 </body>
 
 </html>
