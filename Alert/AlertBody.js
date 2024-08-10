@@ -1,10 +1,11 @@
+import {WC} from "../WC.js"
 /**
  * Alert body component
  * @class
- * @extends HTMLElement
+ * @extends WC
  */
 
-class AlertBody extends HTMLElement{
+class AlertBody extends WC{
     constructor(){
         super()
         this._css = `

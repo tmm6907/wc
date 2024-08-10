@@ -1,10 +1,10 @@
-
+import {WC} from "../WC.js"
 /**
  * Button web component
  * @class
- * @extends HTMLElement
+ * @extends WC
  */
-class Button extends HTMLElement {
+class Button extends WC {
     /** 
      * @constructor
      * @param {string} [text]

@@ -1,3 +1,4 @@
+import {WC} from "../WC.js"
 const fileDropTemplate = document.createElement("template")
 fileDropTemplate.innerHTML = `
 <style>
@@ -66,7 +67,7 @@ button {
  * Drag and drop file upload component
  * @class
  */
-class DragNDrop extends HTMLElement {
+class DragNDrop extends WC {
     constructor() {
         super();
         const shadow = this.attachShadow({ mode: "open" })

@@ -1,10 +1,11 @@
+import {WC} from "../WC.js"
 /**
  * Close button component for alerts.
  * @class
- * @extends HTMLElement
+ * @extends WC
  */
 
-class AlertCloseBtn extends HTMLElement{
+class AlertCloseBtn extends WC{
     constructor(){
         super()
         this._css = `

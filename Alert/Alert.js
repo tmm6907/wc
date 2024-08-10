@@ -1,10 +1,10 @@
-import WC from "../WC.js"
+import {WC} from "../WC.js"
 /**
  * Alert component
  * @class
  * @extends WC
  */
-class Alert extends HTMLElement {
+class Alert extends WC {
     constructor() {
         super()
         /** @type {string}*/

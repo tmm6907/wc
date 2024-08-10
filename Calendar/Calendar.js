@@ -1,3 +1,4 @@
+import {WC} from "../WC.js"
 const calendarTemplate = document.createElement("template")
 calendarTemplate.innerHTML = `
 <style>
@@ -110,7 +111,7 @@ td {
     </tbody>
 </table>
 `
-class Calendar extends HTMLElement {
+class Calendar extends WC {
     constructor() {
         super();
         const shadow = this.attachShadow({ mode: "open" })

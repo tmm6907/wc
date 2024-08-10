@@ -1,9 +1,10 @@
+import {WC} from "../WC.js"
 /**
  * Grid web component.
  * @class
- * @extends HTMLElement
+ * @extends WC
  */
-class Grid extends HTMLElement {
+class Grid extends WC {
     constructor() {
         super()
         /**

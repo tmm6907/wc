@@ -1,10 +1,11 @@
+import {WC} from "../WC.js"
 /**
  * Card comopponent
  * @class
- * @extends HTMLElement
+ * @extends WC
  */
 
-class Card extends HTMLElement{
+class Card extends WC{
     constructor(){
         super()
     }

@@ -1,9 +1,10 @@
+import {WC} from "../WC.js"
 /**
  * ButtonGroup component
  * @class
- * @extends HTMLElement
+ * @extends WC
  */
-class ButtonGroup extends HTMLElement {
+class ButtonGroup extends WC {
     constructor(){
         super()
         /** 

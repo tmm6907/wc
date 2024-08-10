@@ -1,11 +1,12 @@
-const {signal, component} = reef
+import {signal, component} from "reefjs"
+import {WC, html} from "../WC.js"
 /**
  * Clock component. Utilizes reef.js to add React-like reactivity.
  * 
  * @class
- * @extends HTMLElement
+ * @extends WC
  */
-class Clock extends HTMLElement {
+class Clock extends WC {
     constructor() {
         super();
         let now = new Date();
@@ -18,7 +19,7 @@ class Clock extends HTMLElement {
         /** @type {string}*/
         this._bgColor = ""
         /** @type {string}*/
-        this._css = `
+        this._css = html`
             <style>
                 wc-clock {
                 display: block;
@@ -40,7 +41,7 @@ class Clock extends HTMLElement {
     }  
 
     template = () => {
-        return `
+        return html`
         ${this._css}
         <div key="${this.uuid}">${this.time.value}</div>
     `;
