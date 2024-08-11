@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="styles/styles.css">
-    <script defer type="module" src="ClockWC\Clock.js"></script>
+    <script defer type="module" src="Clock\Clock.js"></script>
     <script defer type="module" src="Calendar\Calendar.js"></script>
     <script defer type="module" src="DragNDrop\DragNDrop.js"></script>
     <script defer type="module" src="Grid\Grid.js"></script>
@@ -18,7 +18,8 @@
     <script defer type="module" src="ActiveSearch\ActiveSearch.js"></script>
     <script defer type="module" src="Link\Link.js"></script>
     <!-- <script defer type="module" src="Alert\AlertTitle.js"></script> -->
-    <!-- <script defer type="module" src="Alert\AlertIcon.js"></script> -->
+    <script defer type="module" src="Alert\AlertIcon.js"></script>
+    <script defer type="module" src="Form\Form.js"></script>
 </head>
 
 <body>
@@ -105,8 +106,16 @@
         </wc-alert>
         
         <wc-active-search placeholder="search1"></wc-active-search>
-        <wc-link>Link Text</wc-link>
+        <wc-link url="#">Link Text</wc-link>
         <wc-link padded>Link Text</wc-link>
+        <wc-calendar></wc-calendar>
+        <wc-drag-drop bg-color="var(--bgColorLight)" url="#" style="margin-inline: auto;"></wc-drag-drop>
+        <wc-form action="/sas" method="PUT">
+            <input type="text" name="first" id="first" style="margin-inline: auto;">
+            <input type="text" name="first" id="first" style="margin-inline: auto;">
+            <input type="date" name="first" id="first" style="margin-inline: auto;">
+            <input type="color" name="first" id="first" style="margin-inline: auto;">
+        </wc-form>
     </div>
     <script src="https://kit.fontawesome.com/1779bb385a.js" crossorigin="anonymous"></script>
 </body>

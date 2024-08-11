@@ -1,76 +1,13 @@
-import {WC} from "../WC.js"
-const fileDropTemplate = document.createElement("template")
-fileDropTemplate.innerHTML = `
-<style>
-:host{
-    display: block;
-    width: fit-content;
-    color: var(--text-color, black);
-    font-weight: bold;
-    background-color: var(--bg-color, whitesmoke);
-    padding: 1em;
-    margin: 1em 0;
-    border: 0px #000 solid;
-    border-radius: 0.5rem;
-}
-.fileContainer {
-    margin: 0.5em 0;
-}
-header {
-    display: flex;
-    align-items: center;
-}
-
-label {
-    margin-bottom: 1rem ;
-}
-button {
-    padding: 0.5em 1em;
-    border: 1px #000 solid;
-    border-radius: 4px;
-    margin-left: auto;
-}
-.placeholder {
-    padding: 1em;
-    font-weight: normal;
-    color: gray;
-    text-align: center;
-}
-.previewContainer {
-    border-top: 1px solid #ccc;
-    padding-top: 0.5em;
-}
-
-.filePreview {
-    display: flex;
-    align-items: center;
-}
-.filePreview button {
-    margin-left: 1em;
-    cursor: pointer;
-}
-</style>
-<div class="fileContainer">
-    <header>
-        <label for="myfile"></label>
-        <button type="submit"></button>
-    </header>
-    <section  class="placeholder">
-        <p></p>
-    </section >
-    <input type="file" hidden multiple></input>
-    <section class="previewContainer"></section>
-</div>
-`
-
+import {WC, html} from '../WC.js'
 /**
- * Drag and drop file upload component
+ * Drag and drop component
  * @class
+ * @extends WC
  */
-class DragNDrop extends WC {
-    constructor() {
-        super();
-        const shadow = this.attachShadow({ mode: "open" })
+
+class DragNDrop extends WC{
+    constructor(){
+        super()
         // this.updateDate()
         /** @type {string} */
         this._color = ""
@@ -92,22 +29,90 @@ class DragNDrop extends WC {
         this._placeholder = "Drop files here"
         /** @type {string} */
         this._submit = "Submit"
-        shadow.append(fileDropTemplate.content.cloneNode(true))
-        
-        
-    }
+        this._css = html`
+        <style>
+            /* wc-drag-drop {
+                --text-color: "";
+                --bg-color: "";
+            } */
+            .wc-drag-drop {
+                display: block;
+                width: fit-content;
+                color: var(--text-color, black);
+                font-weight: bold;
+                background-color: var(--bg-color, whitesmoke);
+                padding: 1em;
+                margin: 1em 0;
+                border: 0px #000 solid;
+                border-radius: 0.5rem;
+            }
+            wc-drag-drop .fileContainer {
+                margin: 0.5em 0;
+            }
+            wc-drag-drop header {
+                display: flex;
+                align-items: center;
+            }
 
-    static observedAttributes = [
-        "color",
-        "bg-color",
-        "name",
-        "title",
-        "height",
-        "width",
-        "url",
-        "placeholder",
-        "submit-btn"
-    ]
+            wc-drag-drop label {
+                margin-bottom: 1rem ;
+            }
+            wc-drag-drop button {
+                padding: 0.5em 1em;
+                border: 1px #000 solid;
+                border-radius: 4px;
+                margin-left: auto;
+            }
+            wc-drag-drop .placeholder {
+                padding: 1em;
+                font-weight: normal;
+                color: gray;
+                text-align: center;
+            }
+            wc-drag-drop .previewContainer {
+                border-top: 1px solid #ccc;
+                padding-top: 0.5em;
+            }
+
+            wc-drag-drop .filePreview {
+                display: flex;
+                align-items: center;
+            }
+            wc-drag-drop .filePreview button {
+                margin-left: 1em;
+                cursor: pointer;
+            }
+        </style>
+        `
+        this._html = html`
+        <div class="fileContainer">
+            <header>
+                <label for="myfile"></label>
+                <button type="submit"></button>
+            </header>
+            <section  class="placeholder">
+                <p></p>
+            </section >
+            <input type="file" hidden multiple />
+            <section class="previewContainer"></section>
+        </div>
+        `
+        this.innerHTML = this._css + this._html
+        this.classList.add("wc-drag-drop")
+    }
+    static get observedAttributes(){
+        return [
+            "color",
+            "bg-color",
+            "name",
+            "title",
+            "height",
+            "width",
+            "url",
+            "placeholder",
+            "submit-btn"
+        ]
+    }
 
     /**
      * DragOver Event handler
@@ -122,14 +127,14 @@ class DragNDrop extends WC {
     handleDrop(e) {
         e.preventDefault();
         e.stopPropagation();
-        const inputElement = this.shadowRoot.querySelector('input')
+        const inputElement = this.querySelector('input')
         this._files = e.dataTransfer.files;
         inputElement.files = this.files;
         this.displayFilePreviews();
     };
 
     displayFilePreviews() {
-        const previewContainer = this.shadowRoot.querySelector(".previewContainer");
+        const previewContainer = this.querySelector(".previewContainer");
         previewContainer.innerHTML = ""; 
 
         Array.from(this._files).forEach(file => {
@@ -150,39 +155,39 @@ class DragNDrop extends WC {
 
     setColor(value) {
         this._color = value
-        this.shadowRoot.host.style.setProperty("--text-color", this._color)
+        this.style.setProperty("--text-color", this._color)
     }
     setBackgroundColor(value) {
         this._bgColor = value
-        this.shadowRoot.host.style.setProperty("--bg-color", this._bgColor)
+        this.style.setProperty("--bg-color", this._bgColor)
     }
     setName(value) {
         this._name = value
-        this.shadowRoot.querySelector("input").setAttribute("name", value)
+        this.querySelector("input").setAttribute("name", value)
     }
     setTitle(value) {
         this._title = value
-        this.shadowRoot.querySelector("label").innerHTML = value
+        this.querySelector("label").innerHTML = value
     }
 
     setWidth(value) {
         this._width = value
-        this.shadowRoot.host.style.width = value
+        this.style.width = value
     }
 
     setHeight(value) {
         this._height = value
-        this.shadowRoot.host.style.height = value
+        this.style.height = value
     }
 
     setPlaceholder(value) {
         this._placeholder = value;
-        this.shadowRoot.querySelector("section p").innerHTML = value;
+        this.querySelector("section p").innerHTML = value;
     }
     
     setSubmit(value) {
         this._submit = value
-        this.shadowRoot.querySelector("header button").innerHTML = value;
+        this.querySelector("header button").innerHTML = value;
     }
 
     setURL(value) {
@@ -217,69 +222,62 @@ class DragNDrop extends WC {
         };
         xhr.send(formData);
     }
-
-    render(){
-        this.setPlaceholder(this._placeholder)
-        this.setSubmit(this._submit)
-    }
-
-    connectedCallback() {
-        var dropArea = this.shadowRoot.querySelector("section.placeholder")
-        dropArea.addEventListener('click', () => { 
-            var input = this.shadowRoot.querySelector("input")
-            input.click()
-             
-        });
-        var submitBtn = this.shadowRoot.querySelector("header button")
-        submitBtn.addEventListener('click', () => { 
-            this.uploadFiles()
-        });
-        if (this._url == "") console.error("filedrop-wc url attribute not set", this._url)
-        this.render()
-        this.shadowRoot.host.addEventListener('dragover', this.handleDragOver);
-        this.shadowRoot.host.addEventListener('drop', this.handleDrop);
-    }
-
-    attributeChangedCallback(attr, oldVal, newVal) {
-        if (attr == "color" && oldVal !== newVal) {
+    attributeChangedCallback(name, oldVal, newVal){
+        if (name == "color" && oldVal !== newVal) {
             this.setColor(newVal)
             console.log("Color changed to:", this._color)
         }
-        if (attr == "bg-color" && oldVal !== newVal) {
+        if (name == "bg-color" && oldVal !== newVal) {
             this.setBackgroundColor(newVal)
             console.log("BG Color changed to:", this._bgColor)
         }
-        if (attr == "name" && oldVal !== newVal) {
+        if (name == "name" && oldVal !== newVal) {
             this.setName(newVal)
             console.log("Name changed to:", this._name)
         }
-        if (attr == "title" && oldVal !== newVal) {
+        if (name == "title" && oldVal !== newVal) {
             this.setTitle(newVal)
             console.log("Title changed to:", this._title)
         }
-        if (attr == "width" && oldVal !== newVal) {
+        if (name == "width" && oldVal !== newVal) {
             this.setWidth(newVal)
             console.log("Width changed to:", this._width)
         }
-        if (attr == "height" && oldVal !== newVal) {
+        if (name == "height" && oldVal !== newVal) {
             this.setHeight(newVal)
             console.log("Height changed to:", this._height)
         }
-        if (attr == "url" && oldVal !== newVal) {
+        if (name == "url" && oldVal !== newVal) {
             this.setURL(newVal)
             console.log("URL changed to:", this._url)
         }
 
-        if (attr == "placeholder" && oldVal !== newVal) {
+        if (name == "placeholder" && oldVal !== newVal) {
             this.setPlaceholder(newVal)
             console.log("Placeholder changed to:", this._placeholder)
         }
 
-        if (attr == "submit-btn" && oldVal !== newVal) {
+        if (name == "submit-btn" && oldVal !== newVal) {
             this.setSubmit(newVal)
             console.log("Submit changed to:", this._submit)
         }
     }
+    connectedCallback(){
+        var dropArea = this.querySelector("section.placeholder")
+        dropArea.addEventListener('click', () => { 
+            var input = this.querySelector("input")
+            input.click()
+             
+        });
+        var submitBtn = this.querySelector("header button")
+        submitBtn.addEventListener('click', () => { 
+            this.uploadFiles()
+        });
+        if (this._url == "") console.error("filedrop-wc url attribute not set", this._url)
+        this.setPlaceholder(this._placeholder)
+        this.setSubmit(this._submit)
+        this.addEventListener('dragover', this.handleDragOver);
+        this.addEventListener('drop', this.handleDrop);
+    }
 }
-
-customElements.define("filedrop-wc", DragNDrop)
+customElements.define("wc-drag-drop", DragNDrop)

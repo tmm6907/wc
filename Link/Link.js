@@ -41,17 +41,19 @@ class Link extends WC{
         this.innerHTML = this._css + html`
         <a href="">${this.innerHTML}</a>
         `
+        this._link = this.querySelector("a")
     }
     static get observedAttributes(){
-        return ["padded"]
+        return ["padded", "url"]
     }
     attributeChangedCallback(name, oldVal, newVal){
         if (name === "padded") {
             this.querySelector("a").classList.add("padded")
         }
+        if (name === "url") {
+            this._link.setAttribute("href", newVal)
+        }
     }
-    connectedCallback(){
-        
-    }
+    connectedCallback(){}
 }
 customElements.define("wc-link", Link)
