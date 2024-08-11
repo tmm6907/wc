@@ -4,4 +4,4 @@
 This project is for fun and to improve HTML, CSS, JS skills while implementing some traditional JS framework features/methodologies using vanilla JS syntax.
 
 ## Things I'm looking into:
-- Reef.js for it's implementation of signals.
+- [Reef.js](https://github.com/cferdinandi/reef) for it's implementation of signals.
