@@ -30,9 +30,9 @@ class Grid extends WC {
         /**
          * @type {string}
          */
-        this._css = `
+        this._styles = html`
         <style>
-        .wc-grid{
+        wc-grid[wc-key="${this.uuid}"]{
             display: grid;
             gap: ${this.gap};
         }
@@ -117,11 +117,7 @@ class Grid extends WC {
         }
         </style>
         `
-        /**
-         * @type {string}
-         * @public
-         */
-        this.innerHTML = this._css + this.innerHTML
+        this.innerHTML = this._styles + this.innerHTML
         this.classList.add("wc-grid")
     }
 

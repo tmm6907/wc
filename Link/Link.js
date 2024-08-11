@@ -8,7 +8,7 @@ import {html, WC} from "../WC.js"
 class Link extends WC{
     constructor(){
         super()
-        this._css = html`
+        this._styles = html`
         <style>
             a {
                 font: inherit;
@@ -38,7 +38,7 @@ class Link extends WC{
             }
         </style>
         `
-        this.innerHTML = this._css + html`
+        this.innerHTML = this._styles + html`
         <a href="">${this.innerHTML}</a>
         `
         this._link = this.querySelector("a")

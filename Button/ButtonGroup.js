@@ -7,13 +7,7 @@ import {WC} from "../WC.js"
 class ButtonGroup extends WC {
     constructor(){
         super()
-        /** 
-         * @type {string}
-         * @memberof ButtonGroup
-        */
-        this._css = ""
-        this.innerHTML = this._css + this.innerHTML
-        
+        this.innerHTML = this._styles + this.innerHTML
     }
     connectedCallback(){
         this.classList.add("wc-btn-group")

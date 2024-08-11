@@ -14,7 +14,7 @@ class Button extends WC {
     constructor(text, onClick, varient) {
         super()
         /** @type {string}*/
-        this._css = `
+        this._styles = html`
         <style>
         .wc-btn {
             font: inherit;
@@ -50,10 +50,10 @@ class Button extends WC {
         </style>
         `
         if (text) {
-            this.innerHTML = this._css
+            this.innerHTML = this._styles
             this.innerText = text
         }else{
-            this.innerHTML = this._css + this.innerHTML
+            this.innerHTML = this._styles + this.innerHTML
         }
         /** @type {CallableFunction}*/
         this._onclickHandler = onClick

@@ -19,7 +19,7 @@ class Clock extends WC {
         /** @type {string}*/
         this._bgColor = ""
         /** @type {string}*/
-        this._css = html`
+        this._styles = html`
             <style>
                 wc-clock {
                 display: block;
@@ -42,7 +42,7 @@ class Clock extends WC {
 
     template = () => {
         return html`
-        ${this._css}
+        ${this._styles}
         <div key="${this.uuid}">${this.time.value}</div>
     `;
     }

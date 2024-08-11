@@ -20,6 +20,8 @@
     <!-- <script defer type="module" src="Alert\AlertTitle.js"></script> -->
     <script defer type="module" src="Alert\AlertIcon.js"></script>
     <script defer type="module" src="Form\Form.js"></script>
+    <script defer type="module" src="Form\Input.js"></script>
+    <script defer type="module" src="Form\FormGroup.js"></script>
 </head>
 
 <body>
@@ -106,15 +108,30 @@
         </wc-alert>
         
         <wc-active-search placeholder="search1"></wc-active-search>
-        <wc-link url="#">Link Text</wc-link>
-        <wc-link padded>Link Text</wc-link>
+        <wc-link url="#">Text</wc-link>
+        <wc-link padded>Text2</wc-link>
         <wc-calendar></wc-calendar>
         <wc-drag-drop bg-color="var(--bgColorLight)" url="#" style="margin-inline: auto;"></wc-drag-drop>
-        <wc-form action="/sas" method="PUT">
-            <input type="text" name="first" id="first" style="margin-inline: auto;">
-            <input type="text" name="first" id="first" style="margin-inline: auto;">
-            <input type="date" name="first" id="first" style="margin-inline: auto;">
-            <input type="color" name="first" id="first" style="margin-inline: auto;">
+        <wc-form action="/sas" method="PUT" style="width: fit-content; margin-inline: auto;">
+            <wc-input type="text" name="first"  id="first"></wc-input>
+            <wc-input type="text" name="second" id="second"></wc-input>
+            <wc-input type="date" name="third" id="third"></wc-input>
+            <wc-input type="color" name="fourth" id="fourth"></wc-input>
+        </wc-form>
+        <wc-form 
+        action="/sas" 
+        method="PUT" 
+        style="width: fit-content; margin-inline: auto;"
+        bg-color="var(--bgColorDark)"
+        color="var(--textColorLight)"
+        >
+            <wc-form-group>
+                <label for="first" class="display: block;">First Input</label>
+                <wc-input type="text" name="first"  id="first"></wc-input>
+            </wc-form-group>
+            <wc-input type="text" name="second" id="second"></wc-input>
+            <wc-input type="date" name="third" id="third"></wc-input>
+            <wc-input type="color" name="fourth" id="fourth"></wc-input>
         </wc-form>
     </div>
     <script src="https://kit.fontawesome.com/1779bb385a.js" crossorigin="anonymous"></script>

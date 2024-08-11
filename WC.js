@@ -19,6 +19,9 @@ export const html = (strings, ...values) => {
 export class WC extends HTMLElement {
     constructor() {
         super()
+        this.uuid = crypto.randomUUID()
+        this.setAttribute("wc-key", this.uuid)
+        this._styles = ""
+        this._html = ""
     }
 }
-customElements.define("wc-base", WC)

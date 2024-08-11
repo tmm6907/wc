@@ -8,11 +8,11 @@ class Item extends WC {
     constructor() {
         super()
         this.xs = 4
-        this._css = `
+        this._styles = html`
         <style>
         </style>
         `
-        this.innerHTML = this._css + this.innerHTML
+        this.innerHTML = this._styles + this.innerHTML
         
         // this.style.display = "block"
         // this.style.display = "flex"

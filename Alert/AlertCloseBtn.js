@@ -8,7 +8,7 @@ import {WC} from "../WC.js"
 class AlertCloseBtn extends WC{
     constructor(){
         super()
-        this._css = `
+        this._styles = html`
         <style>
         button {
             background-color: var(--bgColorLight, red);
@@ -27,7 +27,7 @@ class AlertCloseBtn extends WC{
         this._html = `
         <button class="wc-alert-close">${this.innerHTML}</button>
         `
-        this.innerHTML = this._css + this._html
+        this.innerHTML = this._styles + this._html
         this.btn = this.querySelector("button")
         this.btn.addEventListener("click", () => {
             this.parentElement.remove()

@@ -8,7 +8,7 @@ import {WC, html} from "../WC.js"
 class Calendar extends WC{
     constructor(){
         super()
-        this._css = html`
+        this._styles = html`
         <style>
             .wc-calendar{
                 display: block;
@@ -139,7 +139,7 @@ class Calendar extends WC{
         `
         this._color = ""
         this._bgColor = ""
-        this.innerHTML = this._css + this._html
+        this.innerHTML = this._styles + this._html
         this.classList.add("wc-calendar")
     }
     static get observedAttributes(){

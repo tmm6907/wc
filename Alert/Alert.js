@@ -8,7 +8,7 @@ class Alert extends WC {
     constructor() {
         super()
         /** @type {string}*/
-        this._css = `
+        this._styles = html`
         <style>
             .alert.alert-light{
                 background-color: var(--bgColorLight);
@@ -79,7 +79,7 @@ class Alert extends WC {
             }
         </style>
         `
-        this.innerHTML = this._css + this.innerHTML
+        this.innerHTML = this._styles + this.innerHTML
         this.classList.add("alert")
         this.classList.add("alert-light")
         // this.props.count = 0

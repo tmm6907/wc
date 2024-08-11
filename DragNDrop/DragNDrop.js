@@ -29,13 +29,9 @@ class DragNDrop extends WC{
         this._placeholder = "Drop files here"
         /** @type {string} */
         this._submit = "Submit"
-        this._css = html`
+        this._styles = html`
         <style>
-            /* wc-drag-drop {
-                --text-color: "";
-                --bg-color: "";
-            } */
-            .wc-drag-drop {
+            wc-drag-drop[wc-key="${this.uuid}"] {
                 display: block;
                 width: fit-content;
                 color: var(--text-color, black);
@@ -97,7 +93,7 @@ class DragNDrop extends WC{
             <section class="previewContainer"></section>
         </div>
         `
-        this.innerHTML = this._css + this._html
+        this.innerHTML = this._styles + this._html
         this.classList.add("wc-drag-drop")
     }
     static get observedAttributes(){

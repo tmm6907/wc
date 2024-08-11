@@ -10,12 +10,11 @@ import {WC, html} from "../WC.js"
 class ActiveSearch extends WC {
     constructor() {
         super()
-        this.uuid = crypto.randomUUID()
         this._placeholder = signal("Search", this.uuid)
         this.url = signal("", this.uuid)
         this._results = signal([], this.uuid)
         
-        this._css = html`
+        this._styles = html`
         <style>
         wc-active-search input {
             width: 32ch;
@@ -81,19 +80,19 @@ class ActiveSearch extends WC {
     template = () => {
         console.log("Rendering", this._results.length, this._results.value)
         try{
-            return this._css + html`
+            return this._styles + html`
             <input type="text" placeholder="${this._placeholder.value}" url="${this.url.value}"/>
             <ul>${this._results.value.map((result) =>html`<li>${result}</li>`).join("")}</ul>
             `
         }
         catch {
-            return this._css + html`
+            return this._styles + html`
             <input type="text" placeholder="${this._placeholder.value}" url="${this.url.value}"/>
             <ul>${this._results.map((result) =>html`<li>${result.value}</li>`).join("")}</ul>
             `
         } 
         
-        // return this._css + `
+        // return this._styles + `
         // <input type="text" placeholder="${this._placeholder.value}" url="${this.url.value}"/>
         // <ul>${this._results.value.map((result) => `<li>${result}</li>`).join("") || ""}</ul>
         // `

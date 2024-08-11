@@ -8,12 +8,12 @@ import {WC} from "../WC.js"
 class AlertBody extends WC{
     constructor(){
         super()
-        this._css = `
+        this._styles = html`
         <style>
         
         </style>
         `
-        this.innerHTML = this._css + this.innerHTML
+        this.innerHTML = this._styles + this.innerHTML
     }
     static get observedAttributes(){
         return []
