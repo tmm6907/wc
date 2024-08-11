@@ -1,0 +1,2 @@
+- Use Vanilla JS
+- Limit reactivity to ReefJS or Vanilla if possible though, I am open to other libraaries if they rely on Vanilla syntax
